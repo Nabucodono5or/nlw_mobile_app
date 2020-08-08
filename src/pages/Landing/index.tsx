@@ -5,8 +5,15 @@ import landingImg from "../../assets/images/landing.png";
 import studyIcon from "../../assets/images/icons/study.png";
 import giveClassesIcon from "../../assets/images/icons/give-classes.png";
 import heartIcon from "../../assets/images/icons/heart.png";
+import { useNavigation } from "@react-navigation/native";
 
 function Landing() {
+  const { navigate } = useNavigation();
+
+  function handleNavigateToGiveClassesPage() {
+    navigate("GiveClasses");
+  }
+
   return (
     <View style={styles.container}>
       <Image source={landingImg} style={styles.banner} />
@@ -22,7 +29,10 @@ function Landing() {
           <Text style={styles.buttonText}>Estudar</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={[styles.button, styles.buttonSecondary]}>
+        <TouchableOpacity
+          onPress={handleNavigateToGiveClassesPage}
+          style={[styles.button, styles.buttonSecondary]}
+        >
           <Image source={giveClassesIcon}></Image>
           <Text style={styles.buttonText}>Dar Aula</Text>
         </TouchableOpacity>
