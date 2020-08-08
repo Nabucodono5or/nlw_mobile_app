@@ -6,8 +6,8 @@ import Landing from "./src/pages/Landing";
 export default function App() {
   return (
     <>
-      <Landing></Landing>
-      <StatusBar style="auto" />
+      <Landing />
+      <StatusBar style="light" />
     </>
   );
 }
