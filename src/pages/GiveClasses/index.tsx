@@ -1,9 +1,17 @@
 import React from "react";
-import { View } from "react-native";
-import styles from "../Landing/styles";
+import { View, ImageBackground } from "react-native";
+import giveClassesBgImage from "../../assets/images/give-classes-background.png";
+import styles from "./styles";
 
 function GiveClasses() {
-  return <View style={styles.container}></View>;
+  return (
+    <View style={styles.container}>
+      <ImageBackground
+        source={giveClassesBgImage}
+        style={styles.content}
+      ></ImageBackground>
+    </View>
+  );
 }
 
 export default GiveClasses;
