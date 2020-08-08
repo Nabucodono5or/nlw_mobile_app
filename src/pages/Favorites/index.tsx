@@ -6,7 +6,7 @@ import PageHeader from "../../components/PageHeader";
 function Favorites() {
   return (
     <View style={style.container}>
-      <PageHeader />
+      <PageHeader title="Meus Proffys favoritos" />
     </View>
   );
 }
