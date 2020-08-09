@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { View, Text } from "react-native";
 import PageHeader from "../../components/PageHeader";
 import TeacherItem, { Teacher } from "../../components/TeacherItem/TeacherItem";
@@ -21,7 +21,7 @@ function TeacherList() {
   const [week_day, setWeekDay] = useState("");
   const [time, setTime] = useState("");
 
-  useEffect(() => {
+  function loadFavorites() {
     AsyncStorage.getItem("favorites").then((response) => {
       if (response) {
         const favoritedTeachers = JSON.parse(response);
@@ -33,14 +33,15 @@ function TeacherList() {
         setFavorites(favoritedTeachersIds);
       }
     });
-  }),
-    [];
+  }
 
   function handlerToggleFiltersVisible() {
     setIsFilterVisible(!isFiltersVisible);
   }
 
   async function handlerFiltersSubmit() {
+    loadFavorites();
+
     const response = await api.get("classes", {
       params: {
         subject,
