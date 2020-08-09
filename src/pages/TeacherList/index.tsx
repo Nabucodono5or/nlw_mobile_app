@@ -10,9 +10,11 @@ import {
 } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
 import style from "./style";
+import api from "../../services/api";
 
 function TeacherList() {
   const [isFiltersVisible, setIsFilterVisible] = useState(false);
+  const [teachers, setTeachers] = useState([]);
   const [subject, setSubject] = useState("");
   const [week_day, setWeekDay] = useState("");
   const [time, setTime] = useState("");
@@ -21,12 +23,17 @@ function TeacherList() {
     setIsFilterVisible(!isFiltersVisible);
   }
 
-  function handlerFiltersSubmit() {
-    console.log({
-      subject,
-      week_day,
-      time,
+  async function handlerFiltersSubmit() {
+    const response = await api.get("classes", {
+      params: {
+        subject,
+        week_day,
+        time,
+      },
     });
+
+    console.log(response.data);
+    setTeachers(response.data);
   }
 
   return (
