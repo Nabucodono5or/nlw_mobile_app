@@ -3,6 +3,7 @@ import { View, ScrollView } from "react-native";
 import AsyncStorage from "@react-native-community/async-storage";
 import PageHeader from "../../components/PageHeader";
 import TeacherItem, { Teacher } from "../../components/TeacherItem/TeacherItem";
+import { useFocusEffect } from "@react-navigation/native";
 import style from "./style";
 
 function Favorites() {
@@ -18,10 +19,11 @@ function Favorites() {
     });
   }
 
-  useEffect(() => {
-    loadFavorites();
-  }, []);
-
+  useFocusEffect(
+    React.useCallback(() => {
+      loadFavorites();
+    }, [])
+  );
   return (
     <View style={style.container}>
       <PageHeader title="Meus Proffys favoritos" />
