@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text } from "react-native";
 import PageHeader from "../../components/PageHeader";
-import TeacherItem from "../../components/TeacherItem/TeacherItem";
+import TeacherItem, { Teacher } from "../../components/TeacherItem/TeacherItem";
 import {
   ScrollView,
   TextInput,
@@ -94,10 +94,9 @@ function TeacherList() {
         style={style.teacherList}
         contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 16 }}
       >
-        <TeacherItem />
-        <TeacherItem />
-        <TeacherItem />
-        <TeacherItem />
+        {teachers.map((teacher: Teacher) => {
+          return <TeacherItem key={teacher.id} teacher={teacher} />;
+        })}
       </ScrollView>
     </View>
   );
